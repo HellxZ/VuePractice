@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+<script src="js/vue@2.5.17.js"></script>
+</head>
+<body>
+<div id="app">
+	<runoob></runoob>
+</div>
+<div id="app2">
+	<runoob2></runoob2>
+</div>
+
+<script>
+Vue.component('runoob2',{
+	template:"<h1>全局模板</h1>"
+});
+var vm1 = new Vue({
+	el:"#app2"
+});
+// 创建根实例
+var vm2 = new Vue({
+  el: '#app',
+  components: {
+    // <runoob> 将只在父模板可用
+    'runoob': {
+		template:"<h2>子模板</h2>"
+	}
+  }
+});
+</script>
+</body>
+</html>
