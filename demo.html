@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Demo</title>
+    <link rel="stylesheet" href="css/demo.css">
+</head>
+
+<body>
+
+    <div id="app">
+        <fieldset>
+            <legend>Create New Person</legend>
+            <div class="form-data">
+                <label>Name:</label>
+                <input type="text" v-model="newPerson.name">
+            </div>
+            <div class="form-data">
+                <label>Age:</label>
+                <input type="text" v-model="newPerson.age">
+            </div>
+            <div class="form-data">
+                <label>Sex:</label>
+                <select name="sex" v-model="newPerson.sex">
+                    <option value="Male" selected>Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="form-data">
+                <label></label>
+                <button @click="addPerson">Create</button>
+            </div>
+        </fieldset>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Sex</th>
+                <th>Delete</th>
+            </thead>
+            <tbody>
+                <tr v-for="(p,index) in people">
+                    <td>{{p.name}}</td>
+                    <td>{{p.age}}</td>
+                    <td>{{p.sex}}</td>
+                    <td :class="'text-center'">
+                        <button @click="delPerson(index)">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+	<script src="js/vue@2.5.17.js"></script>
+    <script src="js/demo.js"></script>
+
+</body>
+
+</html>
