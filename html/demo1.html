@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/demo1.css">
+    <title>小白课程第一个综合demo--打击灭火器</title>
+    <script src="../js/vue@2.5.17.js"></script>
+</head>
+<body>
+    <div id="vue-app">
+        <!-- 图片 -->
+        <div id="bag"></div>
+        <!-- 健康情况 -->
+        <div id="bag-health">
+            <div :style="{width: health + '%'}"></div>
+        </div>
+        <!-- 控制按钮 -->
+        <div id="controls">
+            <button @click="knock" v-show="!ended">使劲敲</button>
+            <button @click="reset">重置</button>
+        </div>
+    </div>
+
+    <script src="../js/demo1.js"></script>
+</body>
+</html>

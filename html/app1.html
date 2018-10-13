@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>VueJS学习第1页</title>
+    <link href="../css/style1.css" rel="stylesheet" />
+    <script src="../js/vue@2.5.17.js"></script><!-- 使用cdn方式引入vue.js -->
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{greater('Afternoon')}}</h1><!-- 调用方法 -->
+        <h1>{{message}}</h1><!-- 显示数据 -->
+    </div>
+    <div id="app-2">
+        <span v-bind:title="message">
+            <!-- 动态绑定数据 -->
+            鼠标悬停几秒钟查看此处动态绑定的提示信息！
+        </span>
+    </div>
+    <div id="app-3">
+        <p v-if="seen">A:现在你看到我了</p><!-- if else 判断 -->
+        <p v-else="seen">B:现在你看到我了</p>
+        <p v-else-if="!seen">当你看到我的时候，seen为false</p>
+    </div>
+    <div id="app-4">
+        <dl v-for="tomato in tomatos">
+            <!-- 遍历循环 -->
+            <li>{{tomato.text}}</li>
+        </dl>
+    </div>
+    <div id="app-5">
+        <p>{{message}}</p>
+        <p v-on:click="reverseFunc">点这里倒序</p><!-- 点击事件调用函数 -->
+    </div>
+    <div id="app-6">
+        <p>{{message}}</p>
+        <input v-model="message"><!-- v-model命令实现输入与表单数据双向绑定 -->
+    </div>
+    <div id="app-7"><!-- 使用定义组件 -->
+        <ol>
+            <todo-item></todo-item>
+        </ol>
+    </div>
+    <div id="app-7-1"><!-- 定义props组件 -->
+        <ol>
+            <todo-item2 v-for="car in cars" v-bind:todo="car" v-bind:key="car.id">
+            </todo-item2>
+        </ol>
+    </div>
+
+    <div id="app-8"><!-- 数据的冻结 -->
+        <p>{{foo}}</p>
+        <p v-on:click="foo = 'baz'">Change Me</p>
+    </div>
+
+    <div id="canvas" @mousemove="inputXY"><!-- @mousemove相当于v-on:mousemove -->
+        {{x}},{{y}} - <span style="width: 10px;height:10px; background-color: red;" @mousemove.stop>点这里停止</span>
+    </div>
+
+    <div id="constant"></div>
+
+
+    <script src="../js/app1.js"></script><!-- vue的代码 -->
+</body>
+
+</html>

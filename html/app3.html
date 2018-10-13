@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算属性</title>
+    <script src="../js/vue@2.5.17.js"></script><!-- 使用cdn方式引入vue.js -->
+</head>
+<body>
+    <div class="app-1">
+        <span v-once>这个值将不再改变:{{message}}</span><!-- 使用v-once保证数值只在初始化的时候改变 -->
+    </div>
+    <div class="app-2"><!-- 双括号只会输出文本，输出html需要v-html -->
+        <span v-html="html"></span>
+    </div>
+    <!-- v-bind可简写为:参数
+         v-on可简写为@参数
+        -->
+    <div class="compute"><!-- 计算属性 computed与methods的区别 -->
+        <p>操作前：{{args}}</p>
+        <p>逆序后：{{reverseArgs}}</p>--通过计算操作
+        <p>当前计算时间：{{time}}</p>使用compute.time输出计算结果，可以多次调用，但返回的值会是缓存的值
+        <p>通过方法返回的时间：{{methodTime()}}</p>--通过compute.methodTime()方法得到，没有缓存
+    </div>
+    ----
+    <div class="created"></div>
+    
+    <script src="../js/app3.js"></script>
+</body>
+</html>

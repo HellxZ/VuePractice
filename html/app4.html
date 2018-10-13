@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/style4.css">
+    <title>Document</title>
+    <script src="../js/vue@2.5.17.js"></script>
+</head>
+<body>
+    <div id="vue-app">
+        <h1>动态 Css Class</h1>
+
+        <h2 v-bind:class="{red:true,blue:false}">示例1</h2>
+        <!-- <div @click="changeColor=!changeColor" :class="{changeColor:changeColor}">
+            <span>Jacky</span>
+        </div> -->
+
+        <h2>示例2</h2>
+        <button @click="changeColor=!changeColor">changeColor</button>
+        <button @click="changeLength=!changeLength">changeLength</button><br>
+        <div :class="computeClass">
+            <span>Test</span>
+        </div>
+    </div>
+    <script src="../js/app4.js"></script>
+</body>
+</html>

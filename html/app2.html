@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据绑定</title>
+    <script src="../js/vue@2.5.17.js"></script>
+</head>
+
+<body>
+    <div>使用引用形式进行数据绑定<br></div>
+    <div id="input">
+        
+        姓名：
+        <input type="text" @keyup="inputName" ref="_name">
+        <span>输入的姓名为：{{name}}</span><br>
+        年龄：
+        <input type="text" @keyup="inputAge" ref="_age">
+        <span>输入的年龄为：{{age}}</span>
+    </div>
+    <div>使用v-model进行数据绑定</div>
+    <div id="input2">
+        
+        <input type="text" v-model="name2">
+        <span>输入的数据是：{{name2}}</span>
+    </div>
+    <script src="../js/app2.js"></script>
+</body>
+
+</html>
