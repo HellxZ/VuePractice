@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第二个例子——嵌套路由</title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <h2>嵌套路由</h2>
+            <a v-link="{path: '/home'}">Outside</a>
+            <router-view></router-view>
+        </div>
+        <template id="outside">
+            <div>
+                <h2>here is outside one!</h2>
+                <a v-link="{path: '/home/inside'}">Inside</a>
+                <router-view></router-view>
+            </div>
+        </template>
+        <template id="inside">
+            <div>
+                <h3>this is inside one!</h3>
+            </div>
+        </template>
+    </div>
+    <script>
+        const Outside = Vue.extend({
+            template: '#outside'
+        });
+        const Inside = Vue.extend({
+            template: '#inside'
+        });
+        let router = new VueRouter();
+        router.map({
+            '/home': {
+                component: Outside,
+                subRoutes: {
+                    '/inside': {
+                        component: Inside
+                    }
+                }
+            }
+        });
+
+        let App = Vue.extend({});
+        router.start(App, '#app');
+    </script>
+</body>
+
+</html>
