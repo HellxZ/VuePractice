@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第一个vue router基础例子</title>
+    <!--引入vue.js与vue-router.js-->
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-router.js"></script>
+    <style>
+    
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!--对比标识-->
+        <h1>
+            Vue Router Basic 1
+        </h1>
+        <!--两个超连接-->
+        <div>
+            <a v-link="{path: '/home'}">Home</a>
+            <a v-link="{path: '/about'}">About</a>
+        </div>
+        <!--路由跳转的页面-->
+        <router-view></router-view>
+
+        <!--Home模板，模板默认不显示-->
+        <template id="home">
+            <div>
+                <h2>Home</h2>
+                {{msg}}
+            </div>
+        </template>
+        <!--About模板-->
+        <template id="about">
+            <div>
+                <h2>About</h2>
+                {{msg}}
+            </div>
+        </template>
+    </div>
+
+    <script>
+    // 分别创建Home与About组件
+    var Home = Vue.extend({
+        template: '#home',
+        data: function(){
+            return {
+                msg: "Home, Hello vue router!"
+            }
+        }
+    });
+
+    var About = Vue.extend({
+        template: '#about',
+        data: function(){
+            return {
+                msg: "About, this is about a vue router tutourial!"
+            }
+        }
+    });
+
+    //创建路由
+    var router = new VueRouter();
+    
+    //匹配路由
+    router.map({
+        '/home': {component: Home},
+        '/about': {component: About}
+    });
+    
+    //创建app实例
+    var App = Vue.extend({});
+
+    //开启路由
+    router.start(App, '#app');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // var router = new VueRouter();
+    // router.map({
+    //     '/home': {component: Home},
+    //     '/about': {component: About}
+    // });
+    // var App = Vue.extend({});
+    // router.start(App, '#app');
+
+    </script>
+</body>
+</html>
