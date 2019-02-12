@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +9,8 @@
     <!--引入vue.js与vue-router.js-->
     <script src="../js/vue.js"></script>
     <script src="../js/vue-router.js"></script>
-    <style>
-    
-    </style>
 </head>
+
 <body>
     <div id="app">
         <!--对比标识-->
@@ -25,6 +24,21 @@
         </div>
         <!--路由跳转的页面-->
         <router-view></router-view>
+        <div>
+            <h2>创建并启动路由</h2>
+            <h3>js部分：</h3>
+            <ol>
+                <li>创建组件：创建单页面应用需要渲染的组件</li>
+                <li>创建路由：创建VueRouter实例</li>
+                <li>映射路由：调用VueRouter实例的map方法</li>
+                <li>启动路由：调用VueRouter实例的start方法</li>
+            </ol>
+            <h3>html部分：</h3>
+            <ol>
+                <li>使用v-link指令</li>
+                <li>使用&lt;router-view&gt;标签</li>
+            </ol>
+        </div>
 
         <!--Home模板，模板默认不显示-->
         <template id="home">
@@ -43,72 +57,41 @@
     </div>
 
     <script>
-    // 分别创建Home与About组件
-    var Home = Vue.extend({
-        template: '#home',
-        data: function(){
-            return {
-                msg: "Home, Hello vue router!"
+        // 分别创建Home与About组件构造器
+        var Home = Vue.extend({
+            template: '#home',
+            data: function () {
+                return {
+                    msg: "Home, Hello vue router!"
+                }
             }
-        }
-    });
+        });
 
-    var About = Vue.extend({
-        template: '#about',
-        data: function(){
-            return {
-                msg: "About, this is about a vue router tutourial!"
+        var About = Vue.extend({
+            template: '#about',
+            data: function () {
+                return {
+                    msg: "About, this is about a vue router tutourial!"
+                }
             }
-        }
-    });
+        });
 
-    //创建路由
-    var router = new VueRouter();
-    
-    //匹配路由
-    router.map({
-        '/home': {component: Home},
-        '/about': {component: About}
-    });
-    
-    //创建app实例
-    var App = Vue.extend({});
+        //创建路由
+        var router = new VueRouter();
 
-    //开启路由
-    router.start(App, '#app');
+        //映射组件
+        router.map({
+            '/home': { component: Home },
+            '/about': { component: About }
+        });
 
+        //创建app实例
+        var App = Vue.extend({});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // var router = new VueRouter();
-    // router.map({
-    //     '/home': {component: Home},
-    //     '/about': {component: About}
-    // });
-    // var App = Vue.extend({});
-    // router.start(App, '#app');
+        //开启路由
+        router.start(App, '#app');
 
     </script>
 </body>
+
 </html>
